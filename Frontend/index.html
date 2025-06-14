@@ -1,1 +1,276 @@
-//index page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery Path | Drug Addiction Recovery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Recovery<span>Path</span></h1>
+        </div>
+        <nav>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="reward.html"><i class="fas fa-award"></i> Rewards</a></li>
+                <li><a href="challenges.html"><i class="fas fa-tasks"></i> Challenges</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#login-section" class="btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="#signup-section" class="btn-primary"><i class="fas fa-user-plus"></i> Sign Up</a>
+        </div>
+    </header>
+
+    <div class="emergency-button">
+        <a href="#emergency-section" class="emergency-btn"><i class="fas fa-exclamation-triangle"></i> Emergency Help</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Your Journey to Recovery Starts Here</h2>
+            <p>Track your progress, earn rewards, and connect with a supportive community on your path to sobriety.</p>
+            <a href="" class="btn-primary">Get Started</a>
+        </div>
+    </div>
+
+            
+            <div class="dashboard-section challenges">
+                <h3><i class="fas fa-tasks"></i> Challenges</h3>
+                <div class="challenges-container">
+                    <div class="challenge-card active">
+                        <div class="challenge-header">
+                            <h4>Daily Reflection</h4>
+                            <span class="challenge-badge">Active</span>
+                        </div>
+                        <p>Write down three things you're grateful for today</p>
+                        <div class="challenge-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 5%;"></div>
+                            </div>
+                            <span class="progress-text">Not started</span>
+                        </div>
+                        <a href="#" class="btn-primary">Start Challenge</a>
+                    </div>
+                    <div class="challenge-card active">
+                        <div class="challenge-header">
+                            <h4>Mindfulness Session</h4>
+                            <span class="challenge-badge">Active</span>
+                        </div>
+                        <p>Complete a 10-minute guided meditation</p>
+                        <div class="challenge-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 5%;"></div>
+                            </div>
+                            <span class="progress-text">Not started</span>
+                        </div>
+                        <a href="#" class="btn-primary">Start Challenge</a>
+                    </div>
+                    <div class="challenge-card completed">
+                        <div class="challenge-header">
+                            <h4>Support Meeting</h4>
+                            <span class="challenge-badge">Active</span>
+                        </div>
+                        <p>Attend a virtual or in-person support group</p>
+                        <div class="challenge-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 100%;"></div>
+                            </div>
+                            <span class="progress-text">Not started</span>
+                        </div>
+                        <a href="yoga.html" class="btn-primary">Start Challenge</a>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="dashboard-section appointments">
+                <h3><i class="fas fa-calendar-alt"></i> Appointments</h3>
+                <div class="appointment-booking">
+                    <div class="appointment-calendar">
+                        
+                    </div>
+                    <div class="appointment-form">
+                        <h4>Book an Appointment</h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="appointment-type">Appointment Type</label>
+                                <select id="appointment-type">
+                                    <option value="counseling">Counseling Session</option>
+                                    <option value="therapy">Therapy Session</option>
+                                    <option value="group">Group Support</option>
+                                    <option value="medical">Medical Check-up</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointment-date">Date</label>
+                                <input type="date" id="appointment-date" value="2025-03-18">
+                            </div>
+                            <div class="form-group">
+                                <label for="appointment-time">Time</label>
+                                <select id="appointment-time">
+                                    <option value="9:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointment-notes">Notes (Optional)</label>
+                                <textarea id="appointment-notes" rows="3" placeholder="Any specific concerns or topics you'd like to discuss"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">Book Appointment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="login-section" class="auth-section">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h2>Login</h2>
+                <a href="#" class="close-auth">&times;</a>
+            </div>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="form-group remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <p class="form-footer">Don't have an account? <a href="#signup-section">Sign up</a></p>
+            </form>
+        </div>
+    </section>
+
+    <section id="signup-section" class="auth-section">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h2>Sign Up</h2>
+                <a href="#" class="close-auth">&times;</a>
+            </div>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <p>(No Space and Special Characters)</p>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" required>
+                </div>
+                <div class="form-group terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                </div>
+                <button type="submit" class="btn-primary">Sign Up</button>
+                <p class="form-footer">Already have an account? <a href="#login-section">Login</a></p>
+            </form>
+        </div>
+    </section>
+
+    <section id="emergency-section" class="auth-section emergency-section">
+        <div class="auth-container emergency-container">
+            <div class="auth-header">
+                <h2>Emergency Support</h2>
+                <a href="#" class="close-auth">&times;</a>
+            </div>
+            <div class="emergency-options">
+                <div class="emergency-option">
+                    <i class="fas fa-phone"></i>
+                    <h3>Call Support</h3>
+                    <p>24/7 Support: <a href="tel:7402059715">+917402059715</a></p>
+                    <a href="tel:+917402059715" class="btn-secondary">Call Now</a>
+                </div>
+                <div class="emergency-option">
+                    <i class="fas fa-comments"></i>
+                    <h3>Text Support</h3>
+                    <p>Text "HELP" to 7418488587</p>
+                    <a href="sms:741741?&body=HELP" class="btn-secondary">Text Now</a>
+                </div>
+                <div class="emergency-option">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Chat</h3>
+                    <p>Speak with a counselor immediately</p>
+                    <a href="#" class="btn-secondary">Start Chat</a>
+                </div>
+                <div class="emergency-option">
+                    <i class="fa-brands fa-reddit"></i>
+                    <h3>Forums Support</h3>
+                    <p>Get details from Reddit</p>
+                    <a href="sms:741741?&body=HELP" class="btn-secondary">Text Now</a>
+                </div>
+            </div>
+            <div class="emergency-resources">
+                <h3>Additional Resources</h3>
+                <ul>
+                    <li><a href="#">Find local treatment centers</a></li>
+                    <li><a href="#">Substance Abuse and Mental Health Services Administration</a></li>
+                    <li><a href="#">National Institute on Drug Abuse</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <button class="chat-button" onclick="window.location.href='live-chat.html'">
+        <i class="fas fa-comment"></i>
+    </button>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Recovery<span>Path</span></h3>
+                <p>Supporting your journey to sobriety one step at a time.</p>
+                
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="reward.html">Rewards</a></li>
+                    <li><a href="challenges.html">Challenges</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope "></i>recoverypath@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91812284921</p>
+                <p><i class="fas fa-map-marker-alt"></i> 35D, Original Street, Anna nagar, Chennai </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 RecoveryPath. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
