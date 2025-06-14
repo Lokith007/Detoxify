@@ -20,6 +20,7 @@ const Loginschema = new mongoose.Schema({
     },
     gmail : {
         type : String,
+        unique:true,
         required: true
     },
     lastlogin:{
@@ -36,7 +37,9 @@ const Loginschema = new mongoose.Schema({
         default:0
     },
     Apartner:{
-    type:String,
+    type:  mongoose.Schema.Types.ObjectId,
+    ref :  'partners',
+    default: null
     }
 });
 
