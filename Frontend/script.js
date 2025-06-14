@@ -79,3 +79,4 @@ document.getElementById("signup").addEventListener('submit', async function(even
     }
 });
 
+// Cookie rendering 
