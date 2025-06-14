@@ -5,4 +5,4 @@ const router=express.Router();
 router.post('/login',handler.login);
 router.post('/signup',handler.signup);
 
-module.exports=mainRouter;
+module.exports=router;

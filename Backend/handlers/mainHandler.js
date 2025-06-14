@@ -4,7 +4,7 @@ const body_parse=require('body-parser');
 const cookieParser=require('cookie-parser');
 const jwt=require('jsonwebtoken');  
 const path=require("path");  
-const Users=require("./models/users");
+const Users=require("../../models/users");
 
 const login=expressAsyncHandler(async(req,res)=>{
         const email=req.body.email;
@@ -51,4 +51,7 @@ const signup=expressAsyncHandler(async(req,res)=>{
         return res.send({message:"s"});
 });
 
-module.exports=mainHandler;
+module.exports = {
+    login,
+    signup
+};
