@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detoxify Leaderboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #8edbde;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .leaderboard-title-box {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      margin-bottom: 1.5rem;
+      border: 2px solid #4a148c;
+      text-align: center;
+    }
+
+    .leaderboard-title {
+      font-size: 2rem;
+      color: #4a148c;
+      font-weight: 700;
+      background: linear-gradient(to right, rgb(114, 181, 114), rgb(189, 124, 199));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    .leaderboard-container {
+      width: 100%;
+      max-width: 800px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+       border: 1px solid black; 
+    }
+
+    .filter-section {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-section select {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+      background-color: #f3f3f3;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .leaderboard-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .leaderboard-table thead th {
+      background-color: #2ecc71;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .leaderboard-table tbody td {
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .leaderboard-table tbody tr:hover {
+      background-color: #f0f0f0;
+      transition: background 0.3s ease;
+    }
+
+    @media (max-width: 600px) {
+      .leaderboard-table thead {
+        display: none;
+      }
+
+      .leaderboard-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .leaderboard-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        border-bottom: none;
+      }
+
+      .leaderboard-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #4a148c;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="leaderboard-title-box">
+    <h1 class="leaderboard-title">🏆 Detoxify Leaderboard</h1>
+  </div>
+
+  <div class="leaderboard-container">
+    <div class="filter-section">
+      <label for="leaderboardFilter"><strong>View:</strong></label>
+      <select id="leaderboardFilter" onchange="filterLeaderboard()">
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+      </select>
+    </div>
+
+    <table class="leaderboard-table">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Points</th>
+          <th>Streak</th>
+          <th>Rank</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboardBody">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const weeklyData = [
+      {sno: 1, name: "Dhanvanth", points: 120, streak: 5, rank: "Gold"},
+      {sno: 2, name: "Prrajan", points: 100, streak: 4, rank: "Silver"},
+      {sno: 3, name: "Lokith", points: 80, streak: 3, rank: "Bronze"},
+    ];
+
+    const monthlyData = [
+      {sno: 1, name: "Pranatheesh", points: 450, streak: 20, rank: "Gold"},
+      {sno: 2, name: "Muthuraj", points: 390, streak: 16, rank: "Silver"},
+      {sno: 3, name: "Sanjay", points: 320, streak: 14, rank: "Bronze"},
+    ];
+
+    function renderLeaderboard(data) {
+      const tbody = document.getElementById("leaderboardBody");
+      tbody.innerHTML = "";
+      data.forEach(entry => {
+        tbody.innerHTML += `
+          <tr>
+            <td data-label="S.No">${entry.sno}</td>
+            <td data-label="Name">${entry.name}</td>
+            <td data-label="Points">${entry.points}</td>
+            <td data-label="Streak">${entry.streak}</td>
+            <td data-label="Rank">${entry.rank}</td>
+          </tr>`;
+      });
+    }
+
+    function filterLeaderboard() {
+      const filter = document.getElementById("leaderboardFilter").value;
+      renderLeaderboard(filter === "weekly" ? weeklyData : monthlyData);
+    }
+
+    renderLeaderboard(weeklyData); 
+  </script>
+
+</body>
+</html>
