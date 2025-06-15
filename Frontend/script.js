@@ -245,3 +245,12 @@ document.getElementById("appointment").addEventListener('submit', async function
     console.error('Error:', err);
   }
 });
+
+function simulateLogin() {
+  document.getElementById('auth-buttons').style.display = 'none';
+  document.getElementById('user-info').style.display = 'flex';
+}
+
+ simulateLogin(); 
+
+

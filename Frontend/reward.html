@@ -8,31 +8,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-  <h1>
-    <img src="images/Screenshot_2025-06-14_153956-removebg-preview.png" alt="Logo" class="logo-img">
-    <span>Detoxify</span>
-  </h1>
-</div>
-        <nav>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <label for="nav-toggle" class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </label>
-            <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                <li><a href="reward.html" class="active"><i class="fas fa-award"></i> Rewards</a></li>
-                <li><a href="challenges.html"><i class="fas fa-tasks"></i> Challenges</a></li>
-                 <li><a href="leaderboard.html"><i class="fa-solid fa-trophy"></i>Leaderboard</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <a href="#login-section" class="btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</a>
-            <a href="#signup-section" class="btn-primary"><i class="fas fa-user-plus"></i> Sign Up</a>
-        </div>
-    </header>
+     <header>
+  <div class="logo">
+    <h1>
+      <img src="images/Screenshot_2025-06-14_153956-removebg-preview.png" alt="Logo" class="logo-img">
+      <span>Detoxify</span>
+    </h1>
+  </div>
+
+  <nav>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <ul>
+      <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+      <li><a href="reward.html"><i class="fas fa-award"></i> Rewards</a></li>
+      <li><a href="challenges.html"><i class="fas fa-tasks"></i> Challenges</a></li>
+      <li><a href="leaderboard.html"><i class="fa-solid fa-trophy"></i> Leaderboard</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-info" id="user-info" style="display: none;">
+    <span class="user-points"><i class="fas fa-star"></i> Points: <strong>120</strong></span>
+    <span class="user-streak"><i class="fas fa-fire"></i> Streak: <strong>7 days</strong></span>
+  </div>
+
+  <div class="auth-buttons" id="auth-buttons">
+    <a href="#login-section" class="btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</a>
+    <a href="#signup-section" class="btn-primary"><i class="fas fa-user-plus"></i> Sign Up</a>
+  </div>
+</header>
 
    <div class="emergency-button">
   <a href="javascript:void(0)" class="emergency-btn" onclick="toggleEmergencyModal()">
