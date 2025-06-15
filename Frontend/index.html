@@ -145,7 +145,7 @@
     <section id="login-section" class="auth-section">
         <div class="auth-container">
             <div class="auth-header">
-                <h2>Login</h2>
+                <h2 style="color: var(--primary);">Login</h2>
                 <a href="#" class="close-auth">&times;</a>
             </div>
             <form class="auth-form" id="login">
@@ -157,49 +157,62 @@
                     <label for="login-password">Password</label>
                     <input type="password" id="login-password" required>
                 </div>
-                <div class="form-group remember-me">
-                    <input type="checkbox" id="remember-me">
-                    <label for="remember-me">Remember me</label>
-                </div>
-                <button type="submit" class="btn-primary">Login</button>
+                <div class="remember-me">
+  <input type="checkbox" id="remember" />
+  <label for="remember">Remember me</label>
+</div>
+
+                <div class="form-group login-btn">
+  <button type="submit">Login</button>
+</div>
+
                 <p class="form-footer">Don't have an account? <a href="#signup-section">Sign up</a></p>
             </form>
         </div>
     </section>
 
     <section id="signup-section" class="auth-section">
-        <div class="auth-container">
-            <div class="auth-header">
-                <h2>Sign Up</h2>
-                <a href="#" class="close-auth">&times;</a>
-            </div>
-            <form class="auth-form" id="signup">
-                <div class="form-group">
-                    <label for="signup-name">Full Name</label>
-                    <p>(No Space and Special Characters)</p>
-                    <input type="text" id="signup-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-email">Email</label>
-                    <input type="email" id="signup-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-password">Password</label>
-                    <input type="password" id="signup-password" required>
-                </div>
-                <div class="form-group">
-                    <label for="signup-confirm-password">Confirm Password</label>
-                    <input type="password" id="signup-confirm-password" required>
-                </div>
-                <div class="form-group terms">
-                    <input type="checkbox" id="terms" required>
-                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
-                </div>
-                <button type="submit" class="btn-primary">Sign Up</button>
-                <p class="form-footer">Already have an account? <a href="#login-section">Login</a></p>
-            </form>
-        </div>
-    </section>
+  <div class="auth-container">
+    <div class="auth-header">
+      <h2 style="color: var(--primary);">Sign Up</h2>
+      <a href="#" class="close-auth">&times;</a>
+    </div>
+    <form class="auth-form" id="signup">
+      <div class="form-group">
+        <label for="signup-name">Full Name</label>
+        <p>(No Space and Special Characters)</p>
+        <input type="text" id="signup-name" required>
+      </div>
+      <div class="form-group">
+        <label for="signup-email">Email</label>
+        <input type="email" id="signup-email" required>
+      </div>
+      <div class="form-group">
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" required>
+      </div>
+      <div class="form-group">
+        <label for="signup-confirm-password">Confirm Password</label>
+        <input type="password" id="signup-confirm-password" required>
+      </div>
+      <div class="form-group terms-inline">
+  <label>
+    <input type="checkbox" id="terms" required>
+    I agree to the <a href="#">Terms and Conditions</a>
+  </label>
+</div>
+
+
+
+      <div class="signup-btn-container">
+        <button type="submit" class="signup-btn">Sign Up</button>
+      </div>
+
+      <p class="form-footer">Already have an account? <a href="#login-section">Login</a></p>
+    </form>
+  </div>
+</section>
+
 
     <section id="emergency-section" class="auth-section emergency-section">
         <div class="auth-container emergency-container">
