@@ -20,7 +20,7 @@ const login=expressAsyncHandler(async(req,res)=>{
             console.log("Wrong password");
             return res.send({message:"wp"});
         }
-        const token=jwt.sign({mail:user.Email},process.env.secretkey,{expiresIn:'1h'});
+        const token=jwt.sign({mail:user.Email},process.env.secretkey,{expiresIn:'48h'});
         res.cookie('token', token, {
             httpOnly: true,
             secure: false,
@@ -52,7 +52,7 @@ const signup=expressAsyncHandler(async(req,res)=>{
     const newuser = new Users(data);
     await newuser.save();
 
-    const token = jwt.sign({ mail: data.gmail }, process.env.secretkey, { expiresIn: '1h' });
+    const token = jwt.sign({ mail: data.gmail }, process.env.secretkey, { expiresIn: '48h' });
 
     res.cookie('token', token, {
         httpOnly: true,
@@ -83,13 +83,16 @@ const leaderboard = expressAsyncHandler(async (req, res) => {
 });
 
 const completeChallenge = expressAsyncHandler(async (req, res) => {
-    const { gmail } = req.body;
+    const token = req.cookies.token;
+    const decoded_token=jwt.verify(token,process.env.secretkey);
+    const gmail=decoded_token.mail;
+    const user = await Users.findOne({gmail:mail});
 
-    if (!gmail) {
-        return res.status(400).json({ message: 'Email is required.' });
-    }
+    // if (!gmail) {
+    //     return res.status(400).json({ message: 'Email is required.' });
+    // }
 
-    const user = await Users.findOne({ gmail });
+    // const user = await Users.findOne({ gmail });
     if (!user) {
         return res.status(404).json({ message: 'User not found.' });
     }
@@ -123,11 +126,21 @@ const completeChallenge = expressAsyncHandler(async (req, res) => {
     });
 });
 
-
+const subscribe = expressAsyncHandler(async(req,res)=>{
+    const token = req.cookies.token;
+    const decoded_token=jwt.verify(token,process.env.secretkey);
+    const mail=decoded_token.mail;
+    const user = await Users.findOne({gmail:mail});
+    const subscription = req.body;
+    user.subscription=subscription;
+    await user.save();
+    return res.send(true);
+})
 
 
 module.exports = {
     login,
     signup,
-    leaderboard
+    leaderboard,
+    completeChallenge,
 };

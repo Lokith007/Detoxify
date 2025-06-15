@@ -77,6 +77,7 @@ document.getElementById("signup").addEventListener('submit', async function(even
         console.error("Error during signup:", error);
         alert("Signup failed. Please try again.");
     }
+    registerServiceWorker();
 });
 
 // Cookie rendering 
@@ -93,19 +94,30 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 async function registerServiceWorker(){
-    if('serviceWorker' in navigator && 'PushManager' in windows){
-        const registration = await navigator.serviceWorker.register(sw.js);
+    if('serviceWorker' in navigator && 'PushManager' in window){
+        const permission = await Notification.requestPermission();
+        console.log('🔔 Notification permission:', permission);
+        if (permission !== 'granted') {
+             alert('Notification permission not granted');
+             return;
+        }
+
+        const public_key =await fetch('http://localhost:5000/alert/getkey',{
+            method : 'GET'
+        })
+        .then(res=>res.text());
+
+        const registration = await navigator.serviceWorker.register('sw.js');
         const subscription = await registration.pushManager.subscribe({
              userVisibleOnly: true,
-             applicationServerKey: urlBase64ToUint8Array(process.env.publicKey),
+             applicationServerKey: urlBase64ToUint8Array(public_key),
         });
-
         await fetch('http://localhost:5000/alert/subscribe',{
             method:'POST',
-            header: {
+            headers: {
              'Content-Type': 'application/json'
             },
-            body : json.stringify(subscription),
+            body : JSON.stringify(subscription),
             credentials:"include",
         });
     }
@@ -115,3 +127,32 @@ async function registerServiceWorker(){
 }
 
 // call the registerServiceWorker to get the notification permission from the user.
+
+async function sos() {
+  try {
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+
+    if(!lat){
+        alert ("please ensure that you have given location access");
+        return;
+    }
+    const response = await fetch('http://localhost:5000/alert/sos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({ latitude: lat, longitude: long })
+    });
+
+    const data = await response.json();
+    alert("🚨 SOS Sent Successfully");
+  } catch (error) {
+    alert("❌ Error: " + error.message + "\nMake sure location access is allowed.");
+  }
+}
