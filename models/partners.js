@@ -18,6 +18,13 @@ const Partnerschema = new mongoose.Schema({
         type :mongoose.Schema.Types.ObjectId,
         ref :'users' ,
         default: null
+    },
+    number :{
+        type:Number,
+        default:null
+    },
+    Subscription :{
+        type:Object
     }
 });
 
