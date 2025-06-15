@@ -203,4 +203,5 @@ module.exports = {
     completeChallenge,
     subscribe,
     appointment,
+    addAmbulance
 };
