@@ -27,7 +27,7 @@ document.getElementById("login").addEventListener('submit',function(event){
         }
         else{
              const name=result.name
-             alert("sucess");
+             alert("success");
             window.location.href = `/index.html?name=${name}`;
         }
 })

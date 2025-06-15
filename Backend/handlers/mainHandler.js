@@ -64,22 +64,29 @@ const signup=expressAsyncHandler(async(req,res)=>{
     return res.send({ message: "s" });
 });
 
-const leaderboard = expressAsyncHandler(async (req, res) => {
+const wleaderboard = expressAsyncHandler(async (req, res) => {
     const topUsers = await Users.find({})
-        .select('name XP streak -_id')
-        .sort({ XP: -1 })
-        .limit(10);
-    const result = [...topUsers];
-    const missing = 10 - result.length;
+        .select('name weeklyXP streak -_id')
+        .sort({ weeklyXP: -1 })
+        .limit(3);
+    
+    
+    console.log("weeklyleaderboard");
+    return res.json(topUsers);
+});
 
-    for (let i = 0; i < missing; i++) {
-        result.push({
-            name: '—',
-            XP: 0,
-            streak: 0
-        });
+const mleaderboard = expressAsyncHandler(async (req, res) => {
+    try {
+        const topUsers = await Users.find({})
+            .select('name monthlyXP streak -_id')
+            .sort({ monthlyXP: -1 })
+            .limit(3);
+
+        res.status(200).json(topUsers);
+    } catch (error) {
+        console.error("Error fetching monthly leaderboard:", error);
+        res.status(500).json({ message: 'Failed to retrieve leaderboard' });
     }
-    return res.json(result);
 });
 
 const completeChallenge = expressAsyncHandler(async (req, res) => {
@@ -141,7 +148,8 @@ const subscribe = expressAsyncHandler(async(req,res)=>{
 module.exports = {
     login,
     signup,
-    leaderboard,
+    wleaderboard,
+    mleaderboard,
     completeChallenge,
-    subscribe,
+    subscribe
 };

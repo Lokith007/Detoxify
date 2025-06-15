@@ -32,7 +32,7 @@
       color: #4a148c;
       font-weight: 700;
       background: linear-gradient(to right, rgb(114, 181, 114), rgb(189, 124, 199));
-      -webkit-background-clip: text;
+      /* -webkit-background-clip: text; */
       -webkit-text-fill-color: transparent;
       margin: 0;
     }
@@ -148,39 +148,70 @@
   </div>
 
   <script>
-    const weeklyData = [
-      {sno: 1, name: "Dhanvanth", points: 120, streak: 5, rank: "Gold"},
-      {sno: 2, name: "Prrajan", points: 100, streak: 4, rank: "Silver"},
-      {sno: 3, name: "Lokith", points: 80, streak: 3, rank: "Bronze"},
-    ];
+    let weeklyData = [];
+  let monthlyData = [];
 
-    const monthlyData = [
-      {sno: 1, name: "Pranatheesh", points: 450, streak: 20, rank: "Gold"},
-      {sno: 2, name: "Muthuraj", points: 390, streak: 16, rank: "Silver"},
-      {sno: 3, name: "Sanjay", points: 320, streak: 14, rank: "Bronze"},
-    ];
+  async function fetchAndRenderLeaderboards() {
+    try {
+      const response1 = await fetch('http://localhost:5000/app/wleaderboard');
+      weeklyData = await response1.json();
 
-    function renderLeaderboard(data) {
-      const tbody = document.getElementById("leaderboardBody");
-      tbody.innerHTML = "";
-      data.forEach(entry => {
-        tbody.innerHTML += `
-          <tr>
-            <td data-label="S.No">${entry.sno}</td>
-            <td data-label="Name">${entry.name}</td>
-            <td data-label="Points">${entry.points}</td>
-            <td data-label="Streak">${entry.streak}</td>
-            <td data-label="Rank">${entry.rank}</td>
-          </tr>`;
-      });
+      const response2 = await fetch('http://localhost:5000/app/mleaderboard');
+      monthlyData = await response2.json();
+
+      renderwLeaderboard(weeklyData);  // Show weekly by default
+    } catch (err) {
+      console.error("Error fetching data:", err);
     }
+  }
 
-    function filterLeaderboard() {
-      const filter = document.getElementById("leaderboardFilter").value;
-      renderLeaderboard(filter === "weekly" ? weeklyData : monthlyData);
+  function renderwLeaderboard(data) {
+    const tbody = document.getElementById("leaderboardBody");
+    tbody.innerHTML = "";
+    let i = 1;
+    const rank = ['Gold', 'Silver', 'Bronze'];
+    data.forEach(entry => {
+      tbody.innerHTML += `
+        <tr>
+          <td data-label="S.No">${i}</td>
+          <td data-label="Name">${entry.name}</td>
+          <td data-label="Points">${entry.weeklyXP}</td>
+          <td data-label="Streak">${entry.streak}</td>
+          <td data-label="Rank">${rank[i - 1] || '-'}</td>
+        </tr>`;
+      i += 1;
+    });
+  }
+
+  function rendermLeaderboard(data) {
+    const tbody = document.getElementById("leaderboardBody");
+    tbody.innerHTML = "";
+    let i = 1;
+    const rank = ['Gold', 'Silver', 'Bronze'];
+    data.forEach(entry => {
+      tbody.innerHTML += `
+        <tr>
+          <td data-label="S.No">${i}</td>
+          <td data-label="Name">${entry.name}</td>
+          <td data-label="Points">${entry.monthlyXP}</td>
+          <td data-label="Streak">${entry.streak}</td>
+          <td data-label="Rank">${rank[i - 1] || '-'}</td>
+        </tr>`;
+      i += 1;
+    });
+  }
+
+  function filterLeaderboard() {
+    const filter = document.getElementById("leaderboardFilter").value;
+    if (filter === "weekly") {
+      renderwLeaderboard(weeklyData);
+    } else {
+      rendermLeaderboard(monthlyData);
     }
+  }
 
-    renderLeaderboard(weeklyData); 
+  // Initial run
+  window.onload = fetchAndRenderLeaderboards;
   </script>
 
 </body>

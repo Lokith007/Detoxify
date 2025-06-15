@@ -32,14 +32,21 @@ const Loginschema = new mongoose.Schema({
             type:Number,
             default:0
     },
-    XP:{
+    weeklyXP:{
         type:Number,
+        default:0
+    },
+    monthlyXP:{
+        type: Number,
         default:0
     },
     Apartner:{
     type:  mongoose.Schema.Types.ObjectId,
     ref :  'partners',
     default: null
+    },
+    Subscription:{
+        
     }
 });
 
