@@ -11,5 +11,6 @@ router.get('/completeChallenge',handler.completeChallenge);
 router.post('/subscribe',handler.subscribe);
 router.post('/sendmail',mailhandler.sendMail);
 router.get('/appointment',handler.appointment);
+router.post('/ambulance',handler.addAmbulance);
 
 module.exports=router;

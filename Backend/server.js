@@ -5,6 +5,7 @@ const path = require('path');
 const http = require('http');
 const { Server } = require('socket.io');
 const mainRoute = require('./routers/mainRouter');
+const const cookieParser = require('cookie-parser');
 
 const port = process.env.PORT || 3000; 
 
@@ -12,6 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
