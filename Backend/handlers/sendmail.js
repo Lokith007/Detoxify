@@ -1,3 +1,4 @@
+const expressAsyncHandler = require('express-async-handler');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
@@ -15,7 +16,13 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const sendMail = async (receiverEmail, senderName, doctorName, date) => {
+const sendMail = expressAsyncHandler(async (req, res) => {
+  const { receiverEmail, senderName, doctorName, date } = req.body;
+
+  if (!receiverEmail || !senderName || !doctorName || !date) {
+    return res.status(400).json({ message: "Missing required fields" });
+  }
+
   try {
     const info = await transporter.sendMail({
       from: process.env.GMAIL_USER,
@@ -46,9 +53,13 @@ Team Detoxify`,
     });
 
     console.log("✅ Message sent: %s", info.messageId);
+    res.status(200).json({ message: "Email sent successfully", messageId: info.messageId });
   } catch (err) {
     console.error("❌ Error while sending mail:", err.message);
+    res.status(500).json({ message: "Failed to send email", error: err.message });
   }
-};
+});
 
-module.exports=sendMail;
+
+
+module.exports={sendMail};
