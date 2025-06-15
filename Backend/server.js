@@ -5,7 +5,7 @@ const path = require('path');
 const http = require('http');
 const { Server } = require('socket.io');
 const mainRoute = require('./routers/mainRouter');
-const const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 const port = process.env.PORT || 3000; 
 
