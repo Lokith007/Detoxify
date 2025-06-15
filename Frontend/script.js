@@ -166,3 +166,39 @@ async function sos() {
   function showSOS() {
     alert("📞 Call 112 or contact the nearest emergency center immediately!");
   }
+function startChallengeVideo() {
+    const modal = document.getElementById("challenge-video-modal");
+    const video = document.getElementById("challenge-video");
+
+    modal.style.display = "block";
+    video.currentTime = 0;
+    video.play();
+
+   
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) {
+      video.msRequestFullscreen();
+    }
+
+    video.controls = false;
+    video.addEventListener("timeupdate", preventSkip);
+  }
+
+  function preventSkip(e) {
+    const video = e.target;
+    if (Math.abs(video.currentTime - video._lastTime || 0) > 1) {
+      video.currentTime = video._lastTime;
+    }
+    video._lastTime = video.currentTime;
+  }
+
+  function closeChallengeVideo() {
+    const modal = document.getElementById("challenge-video-modal");
+    const video = document.getElementById("challenge-video");
+    modal.style.display = "none";
+    video.controls = true; 
+    video.removeEventListener("timeupdate", preventSkip);
+  }
