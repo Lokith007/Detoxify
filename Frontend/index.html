@@ -34,9 +34,24 @@
         </div>
     </header>
 
-    <div class="emergency-button">
-        <a href="#emergency-section" class="emergency-btn"><i class="fas fa-exclamation-triangle"></i> Emergency Help</a>
-    </div>
+   <!-- Emergency Help Trigger -->
+<div class="emergency-button">
+  <a href="javascript:void(0)" class="emergency-btn" onclick="toggleEmergencyModal()">
+    <i class="fas fa-exclamation-triangle"></i> Emergency Help
+  </a>
+</div>
+
+<!-- Emergency Modal -->
+<div id="emergency-modal" class="emergency-modal">
+  <div class="emergency-modal-content">
+    <span class="close-btn" onclick="toggleEmergencyModal()">&times;</span>
+    <h3>Emergency Assistance</h3>
+    <p>If you're in danger or need immediate help, click below.</p>
+    <button onclick="showSOS()" class="sos-btn">Show SOS Info</button>
+  </div>
+</div>
+
+
 
     <div class="hero">
         <div class="hero-content">

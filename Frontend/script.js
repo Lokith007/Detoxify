@@ -156,3 +156,13 @@ async function sos() {
     alert("❌ Error: " + error.message + "\nMake sure location access is allowed.");
   }
 }
+
+
+  function toggleEmergencyModal() {
+    const modal = document.getElementById("emergency-modal");
+    modal.style.display = modal.style.display === "block" ? "none" : "block";
+  }
+
+  function showSOS() {
+    alert("📞 Call 112 or contact the nearest emergency center immediately!");
+  }
