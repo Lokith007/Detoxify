@@ -1,2 +1,4 @@
 process.env
 .env
+venv/
+__pycache__/

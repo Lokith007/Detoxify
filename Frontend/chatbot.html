@@ -167,7 +167,7 @@
     function appendMessage(message, sender) {
       const chat = document.getElementById("chat");
       const msgDiv = document.createElement("div");
-      msgDiv.className = message ${sender};
+      msgDiv.className = `message ${sender}`;
       msgDiv.textContent = message;
       chat.appendChild(msgDiv);
       chat.scrollTop = chat.scrollHeight;
@@ -176,7 +176,7 @@
     function typeText(text, sender) {
       const chat = document.getElementById("chat");
       const msgDiv = document.createElement("div");
-      msgDiv.className = message ${sender};
+      msgDiv.className = `message ${sender}`;
       chat.appendChild(msgDiv);
 
       let index = 0;
