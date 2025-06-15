@@ -204,52 +204,44 @@ function startChallengeVideo() {
   }
 
 
+document.getElementById("appointment").addEventListener('submit', async function(event) {
+  event.preventDefault();
 
-  document.getElementById("appointment").addEventListener('/submit',function(event){
-    event.preventDefault();
-    const date=document.getElementById('date');
-    try{
+  const date = document.getElementById('date').value;
 
+  try {
     const response = await fetch('http://localhost:5000/app/appointment');
     const info = await response.json();
-    const data={
-      receiverEmail:info.gmail,
-      senderName:info.name,
-      date:date,
-    }
 
-    fetch('http://localhost:5000/app/sendmail',{
-        method:'POST',
-        headers: {
-              'Content-Type': 'application/json'
-        },
-        body : JSON.stringify(data)
-    })
-    .then(response=>response.json())
-    .then(result=>{
-        const {message}=result
-        if(message === 'Missing required fields'){
-            alert ('Login First');
-        }
-        else if(message==='Failed to send email')
-        {
-            alert('Try again');
-            window.location.reload();
-        }
-        else{
-             alert('Successfully sent');
-            window.location.reload();
-        }
-})
-    .catch(error=> {
-        console.log('Error : ',error);
+    const data = {
+      receiverEmail: info.gmail,
+      senderName: info.name,
+      doctorName: info.doctorName || "Assigned Therapist", // optional fallback
+      date: date,
+    };
+
+    const sendResponse = await fetch('http://localhost:5000/app/sendmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
 
+    const result = await sendResponse.json();
+    const { message } = result;
 
-
-    }catch (err) {
-      console.error("Error fetching data:", err);
+    if (message === 'Missing required fields') {
+      alert('Login First');
+    } else if (message === 'Failed to send email') {
+      alert('Try again');
+      window.location.reload();
+    } else {
+      alert('Successfully sent');
+      window.location.reload();
     }
 
-    
-  });
+  } catch (err) {
+    console.error('Error:', err);
+  }
+});
