@@ -202,3 +202,54 @@ function startChallengeVideo() {
     video.controls = true; 
     video.removeEventListener("timeupdate", preventSkip);
   }
+
+
+
+  document.getElementById("appointment").addEventListener('/submit',function(event){
+    event.preventDefault();
+    const date=document.getElementById('date');
+    try{
+
+    const response = await fetch('http://localhost:5000/app/appointment');
+    const info = await response.json();
+    const data={
+      receiverEmail:info.gmail,
+      senderName:info.name,
+      date:date,
+    }
+
+    fetch('http://localhost:5000/app/sendmail',{
+        method:'POST',
+        headers: {
+              'Content-Type': 'application/json'
+        },
+        body : JSON.stringify(data)
+    })
+    .then(response=>response.json())
+    .then(result=>{
+        const {message}=result
+        if(message === 'Missing required fields'){
+            alert ('Login First');
+        }
+        else if(message==='Failed to send email')
+        {
+            alert('Try again');
+            window.location.reload();
+        }
+        else{
+             alert('Successfully sent');
+            window.location.reload();
+        }
+})
+    .catch(error=> {
+        console.log('Error : ',error);
+    });
+
+
+
+    }catch (err) {
+      console.error("Error fetching data:", err);
+    }
+
+    
+  });
