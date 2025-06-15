@@ -89,6 +89,19 @@ const mleaderboard = expressAsyncHandler(async (req, res) => {
     }
 });
 
+const appointment=expressAsyncHandler(async (req, res) => {
+    const token = req.cookies.token;
+    const decoded_token=jwt.verify(token,process.env.secretkey);
+    const gmail=decoded_token.mail;
+    const user = await Users.findOne({gmail:mail});
+    if (!user) {
+        return res.status(404).json({ message: 'User not found.' });
+    }
+    return res.json({gmail:user.gmail,name:user.name});
+});
+
+
+
 const completeChallenge = expressAsyncHandler(async (req, res) => {
     const token = req.cookies.token;
     const decoded_token=jwt.verify(token,process.env.secretkey);
@@ -151,5 +164,6 @@ module.exports = {
     wleaderboard,
     mleaderboard,
     completeChallenge,
-    subscribe
+    subscribe,
+    appointment
 };

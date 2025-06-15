@@ -10,5 +10,6 @@ router.get('/mleaderboard',handler.mleaderboard);
 router.get('/completeChallenge',handler.completeChallenge);
 router.post('/subscribe',handler.subscribe);
 router.post('/sendmail',mailhandler.sendMail);
+router.get('/appointment',handler.appointment);
 
 module.exports=router;

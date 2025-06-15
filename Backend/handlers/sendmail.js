@@ -17,8 +17,8 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendMail = expressAsyncHandler(async (req, res) => {
-  const { receiverEmail, senderName, doctorName, date } = req.body;
-
+  const { receiverEmail, senderName, date } = req.body;
+  const doctorName="Dr.Dhanvanth";
   if (!receiverEmail || !senderName || !doctorName || !date) {
     return res.status(400).json({ message: "Missing required fields" });
   }
