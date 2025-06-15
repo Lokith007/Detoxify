@@ -1,23 +1,25 @@
 {
   "name": "detoxify",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A platform for toxicity detection and safe communication.",
+  "main": "Backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node Backend/server.js",
+    "dev": "nodemon Backend/server.js",
+    "client": "cd Frontend && npm start",
+    "build-client": "cd Frontend && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DHANVANTHGS/Detoxify.git"
+    "url": "git+https://github.com/Lokith007/Detoxify.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DHANVANTHGS/Detoxify/issues"
+    "url": "https://github.com/Lokith007/Detoxify/issues"
   },
-  "homepage": "https://github.com/DHANVANTHGS/Detoxify#readme",
+  "homepage": "https://github.com/Lokith007/Detoxify#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
@@ -29,9 +31,11 @@
     "http-proxy-middleware": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.2",
-    "node-mailer": "^0.1.1",
     "nodemailer": "^7.0.3",
     "path": "^0.12.7",
     "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
