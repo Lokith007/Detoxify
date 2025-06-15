@@ -164,7 +164,7 @@ async function sos() {
   }
 
   function showSOS() {
-    alert("📞 Call 112 or contact the nearest emergency center immediately!");
+     sos();
   }
 function startChallengeVideo() {
     const modal = document.getElementById("challenge-video-modal");
