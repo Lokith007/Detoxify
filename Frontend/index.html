@@ -40,7 +40,32 @@
     <a href="#signup-section" class="btn-primary"><i class="fas fa-user-plus"></i> Sign Up</a>
   </div>
 </header>
+<div class="ambulance-button-container">
+  <button class="ambulance-btn" id="openAmbulancePopup">
+    <i class="fas fa-ambulance"></i>
+  </button>
+</div>
 
+<!-- Popup Form -->
+<div class="ambulance-popup" id="ambulancePopup">
+  <div class="ambulance-popup-content">
+    <span class="close-ambulance-popup" id="closeAmbulancePopup">&times;</span>
+    <h2>Ambulance Details</h2>
+    <form class="ambulance-form">
+      <label for="amb-name">Driver Name</label>
+      <input type="text" id="amb-name" required>
+      <label for="amb-reg">Vehicle Reg No</label>
+      <input type="text" id="amb-reg" required>
+      <label for="amb-phone">Phone Number</label>
+      <input type="tel" id="amb-phone" required>
+      <label for="amb-license">License No</label>
+      <input type="text" id="amb-license" required>
+      <label for="amb-aadhar">Aadhar No</label>
+      <input type="text" id="amb-aadhar" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
 
    <!-- Emergency Help Trigger -->
 <div class="emergency-button">
@@ -269,6 +294,24 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+  const popup = document.getElementById("ambulancePopup");
+  const openBtn = document.getElementById("openAmbulancePopup");
+  const closeBtn = document.getElementById("closeAmbulancePopup");
+
+  openBtn.addEventListener("click", () => {
+    popup.style.display = "flex";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === popup) popup.style.display = "none";
+  });
+</script>
+
 </body>
 </html>
 
