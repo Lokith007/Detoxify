@@ -6,7 +6,7 @@ const Ambulancechema = new mongoose.Schema({
         type:String,
         required: true
     },
-    Abulancenum: {
+    Ambulancenum: {
         type: String,
         required: true
     },
@@ -27,7 +27,7 @@ const Ambulancechema = new mongoose.Schema({
         required: true
     },
     subscription:{
-        type : Object      
+        type : Object,      
     }
 });
 

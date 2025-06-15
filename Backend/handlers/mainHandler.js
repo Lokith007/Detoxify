@@ -5,6 +5,7 @@ const cookieParser=require('cookie-parser');
 const jwt=require('jsonwebtoken');  
 const path=require("path");  
 const Users=require("../../models/users");
+const Ambulance=require("../../models/ambulance");
 
 const login=expressAsyncHandler(async(req,res)=>{
         const email=req.body.email;
@@ -158,6 +159,42 @@ const subscribe = expressAsyncHandler(async(req,res)=>{
 })
 
 
+const addAmbulance = expressAsyncHandler(async (req, res) => {
+    const {
+        dname,
+        Ambulancenum,
+        number,
+        gmail,
+        aadhar,
+        license_num,
+        subscription
+    } = req.body;
+
+    // Optional: Check if ambulance already exists
+    const existing = await Ambulance.findOne({ Ambulancenum });
+    if (existing) {
+        res.status(400).json({message:"Ambulance driver already present"});
+    }
+
+    const newAmbulance = await Ambulance.create({
+        dname:dname,
+       Ambulancenum: Ambulancenum,
+       number: number,
+        gmail:gmail,
+        aadhar : aadhar,
+        license_num : license_num,
+        subscription :subscription
+    });
+    await newAmbulance.save();
+
+    res.status(201).json({
+        message: "Ambulance added successfully",
+        data: newAmbulance
+    });
+});
+
+
+
 module.exports = {
     login,
     signup,
@@ -165,5 +202,5 @@ module.exports = {
     mleaderboard,
     completeChallenge,
     subscribe,
-    appointment
+    appointment,
 };
