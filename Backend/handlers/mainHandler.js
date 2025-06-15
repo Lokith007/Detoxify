@@ -143,4 +143,5 @@ module.exports = {
     signup,
     leaderboard,
     completeChallenge,
+    subscribe,
 };
