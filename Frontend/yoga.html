@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Poses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Adding FontAwesome CDN -->
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color:#8edbde;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Introduction Section Styling */
+        #intro-section {
+            background-color: #2ecc71;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            width: 80%;
+             border: 1px solid black; 
+        }
+
+        #intro-heading {
+            
+            font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-weight: bold;
+  -webkit-text-stroke: 1px black;
+  margin-bottom: 1rem;
+        }
+
+        #intro-description {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        #extra-info {
+            font-size: 1.1em;
+            color: #ffffff;
+            margin-top: 15px;
+        }
+
+        /* Yoga Poses Section Styling */
+        #yoga-section {
+            padding: 40px;
+            text-align: center;
+            background-color: #f9f9f9;
+            width: 80%;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+             border: 1px solid black; 
+        }
+
+        #yoga-heading {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        #yoga-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .yoga-box {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+             border: 1px solid black; 
+        }
+
+        .yoga-box img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .yoga-box .description {
+            padding: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* Difficulty and XP Section */
+        .yoga-box .difficulty-level,
+        .yoga-box .xp-level {
+            font-size: 14px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .difficulty-level {
+            font-weight: bold;
+        }
+
+        .xp-level i {
+            margin-right: 5px;
+            color: #f39c12;
+        }
+
+        /* Hover Effects */
+        .yoga-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .yoga-box img:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #yoga-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #yoga-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Introduction to Yoga Section -->
+    <section id="intro-section">
+        <h2 id="intro-heading">Yoga for Mind & Body</h2>
+        <p id="intro-description">
+            Yoga improves flexibility, strength, and mental clarity. With regular practice, you can reduce stress, build strength, and feel more relaxed.
+        </p>
+        <p id="extra-info">
+            Start your yoga journey today for a healthier and more balanced life.
+        </p>
+    </section>
+
+    <!-- Yoga Poses Section -->
+    <section id="yoga-section">
+        <h2 id="yoga-heading">Yoga Poses</h2>
+        <div id="yoga-grid">
+            <div class="yoga-box" id="pose1">
+                <img src="images/pose1.png" alt="Pose 1">
+                <p class="description" id="pose1-description">A balancing pose that strengthens the legs and improves posture.</p>
+                <p class="difficulty-level">Difficulty: Easy</p>
+                <p class="xp-level"><i class="fas fa-medal"></i> 5 XP</p>
+            </div>
+            <div class="yoga-box" id="pose2">
+                <img src="images/pose2.png" alt="Pose 2">
+                <p class="description" id="pose2-description">A warrior pose that opens the hips and strengthens the legs.</p>
+                <p class="difficulty-level">Difficulty: Medium</p>
+                <p class="xp-level"><i class="fas fa-medal"></i> 10 XP</p>
+            </div>
+            <div class="yoga-box" id="pose3">
+                <img src="images/pose3.png" alt="Pose 3">
+                <p class="description" id="pose3-description">A standing pose to improve balance and stretch the back.</p>
+                <p class="difficulty-level">Difficulty: Medium</p>
+                <p class="xp-level"><i class="fas fa-medal"></i> 10 XP</p>
+            </div>
+            <div class="yoga-box" id="pose4">
+                <img src="images/pose4.png" alt="Pose 4">
+                <p class="description" id="pose4-description">A deep squat to strengthen the legs and open the hips.</p>
+                <p class="difficulty-level">Difficulty: Hard</p>
+                <p class="xp-level"><i class="fas fa-medal"></i> 20 XP</p>
+            </div>
+            <div class="yoga-box" id="pose5">
+                <img src="images/pose5.png" alt="Pose 5">
+                <p class="description" id="pose5-description">A lunging pose to stretch the hips and strengthen the thighs.</p>
+                <p class="difficulty-level">Difficulty: Medium</p>
+                <p class="xp-level"><i class="fas fa-medal"></i> 10 XP</p>
+            </div>
+            <div class="yoga-box" id="pose6">
+                <img src="images/pose6.png" alt="Pose 6">
+                <p class="description" id="pose6-description">A standing pose to stretch the legs and engage the core.</p>
+                <p class="difficulty-level">Difficulty: Easy</p>
+                <p class="xp-level"><i class="fas fa-medal"></i> 5 XP</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
