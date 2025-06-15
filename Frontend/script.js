@@ -259,3 +259,35 @@ function simulateLogin() {
 }
 
  simulateLogin(); 
+
+document.getElementById('amb-btn').addEventListener('submit', async function (event) {
+  event.preventDefault(); // prevent default form submission
+
+  const data = {
+    driverName: document.getElementById('amb-name').value,
+    vehicleRegNo: document.getElementById('amb-reg').value,
+    phoneNumber: document.getElementById('amb-phone').value,
+    licenseNo: document.getElementById('amb-license').value,
+    aadharNo: document.getElementById('amb-aadhar').value,
+  };
+
+  try {
+    const response = await fetch('http://localhost:5000/app/newAmbulance', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+      alert('✅ Ambulance Registered Successfully!');
+    } else {
+      alert('❌ Registration Failed: ' + result.message);
+    }
+  } catch (error) {
+    console.error('Fetch error:', error);
+    alert('❌ Error occurred while registering: ' + error.message);
+  }
+});
