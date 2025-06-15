@@ -272,7 +272,7 @@ document.getElementById('amb-btn').addEventListener('submit', async function (ev
   };
 
   try {
-    const response = await fetch('http://localhost:5000/app/newAmbulance', {
+    const response = await fetch('http://localhost:5000/app/ambulance', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
