@@ -7,7 +7,7 @@ from flask_cors import CORS
 load_dotenv() 
 api_key = os.getenv("CHAT_API_KEY")
 if not api_key:
-    raise ValueError("API key not found. Add it to your .env file.")
+    raise ValueError("API key not found. Add it to your .env file.") 
 
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel("models/gemini-1.5-flash")
