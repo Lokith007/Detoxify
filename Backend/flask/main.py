@@ -4,7 +4,7 @@ import google.generativeai as genai
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-load_dotenv()
+load_dotenv() 
 api_key = os.getenv("CHAT_API_KEY")
 if not api_key:
     raise ValueError("API key not found. Add it to your .env file.")
